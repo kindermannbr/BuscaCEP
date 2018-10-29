@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script src="chamaApi.js"></script>
+    </head>
+    <body onload="focarCep()">
+        <form name="formulario" id="formulario" method="GET" oninput="getAddress()">
+            <label>Digite o CEP:</label><br>
+            <input type="text" name="cep" id="cep" minlength="8" maxlength="8" onkeypress="somenteNumero(event)" onpaste="return false" required><br> <!-- onpaste="return false" => não permite colar. Caso queira, altere para true.-->
+            <label>Logradouro</label><br>
+            <input type="text" name="logradouro" id="logradouro"><br>
+            <label>Bairro</label><br>
+            <input type="text" name="bairro" id="bairro"><br>
+            <label>Localidade</label><br>
+            <input type="text" name="localidade" id="localidade"><br>
+            <label>UF</label><br>
+            <input type="text" name="uf" id="uf"><p>
+        </form>
+    </body>
+</html>
