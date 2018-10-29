@@ -4,6 +4,7 @@
             <script src="chamaApi.js"></script>
     </head>
     <body onload="focarCep()">
+        <input type="text" id="teste" readonly size="75"><p>
         <form name="formulario" id="formulario" method="GET" oninput="getAddress()">
             <label>Digite o CEP:</label><br>
             <input type="text" name="cep" id="cep" minlength="8" maxlength="8" onkeypress="somenteNumero(event)" onpaste="return false" required><br> <!-- onpaste="return false" => não permite colar. Caso queira, altere para true.-->

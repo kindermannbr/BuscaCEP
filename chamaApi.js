@@ -3,14 +3,14 @@ function focarCep(){
 }
 
 function getAddress(){
-    
     fomulario = document.getElementById("formulario"); //armazena o formulário
     var elementos = formulario.elements; //armazena os elementos do formulário
     var cep = elementos[0].value; //armazena o CEP digitado na variável cep
     var novoCep = `https://viacep.com.br/ws/${cep}/json/`
-    
-    fetch(novoCep)
-    .then(response => {
+
+    if(cep.length === 8){ //esse if foi criado para fazer a requisição da API somente quando tiver os 8 dígitos do CEP.
+        fetch(novoCep)
+        .then(response => {
             fetch(novoCep)
             .then( (res) => res.json() )
             .then( (json) => { 
@@ -20,20 +20,17 @@ function getAddress(){
                     elementos[2].value = json.bairro,
                     elementos[3].value = json.localidade,
                     elementos[4].value = json.uf
-                } else if(json.logradouro === undefined){
+                } else {
                     document.getElementById("cep").style.backgroundColor = "#ff0000";
                     for(var i = 1; i < elementos.length; i++ ){
                         elementos[i].value = 'CEP não encontrado!';
                     } 
-                } else { //precisa implementar no código para buscar se conexão está ok
-                    for(var i = 1; i < elementos.length; i++){
-                        elementos[i].style.backgroundColor =  "#ff0000";
-                        elementos[i].value = 'Verifique sua conexão com a API, ou com a internet';
-                    }
-                }
+                } 
              });
-        }
-    );  
+            }
+        ); 
+    }//fecha o if
+     
 } //fecha a função getAddress();
 
 function somenteNumero(e){ //o parametro e é a letra digitada no teclado.
