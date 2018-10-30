@@ -2,15 +2,30 @@ function focarCep(){
     document.getElementById("cep").focus();
 }
 
+function testaConexaoApi(){
+ /*CÓDIGO ABAIXO AINDA EM IMPLEMENTAÇÃO:
+ 
+    var header = new Headers();
+    header.get(`Status Code`);
+    alert(header.get('Status'));
+
+    fetch(`https://viacep.com.br/ws/01001000/json/`)
+        .then( (res) => {
+            alert('Ok')
+        } )
+        .catch(alert('Deu ruim'));
+        */
+}    
+
+
 function getAddress(){
     fomulario = document.getElementById("formulario"); //armazena o formulário
     var elementos = formulario.elements; //armazena os elementos do formulário
     var cep = elementos[0].value; //armazena o CEP digitado na variável cep
     var novoCep = `https://viacep.com.br/ws/${cep}/json/`
 
+    
     if(cep.length === 8){ //esse if foi criado para fazer a requisição da API somente quando tiver os 8 dígitos do CEP.
-        fetch(novoCep)
-        .then(response => {
             fetch(novoCep)
             .then( (res) => res.json() )
             .then( (json) => { 
@@ -27,8 +42,7 @@ function getAddress(){
                     } 
                 } 
              });
-            }
-        ); 
+            
     }//fecha o if
      
 } //fecha a função getAddress();
